@@ -28,5 +28,11 @@ namespace ID
             Fond frm = new Fond();
             frm.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Neiyavki frm = new Neiyavki();
+            frm.ShowDialog();
+        }
     }
 }

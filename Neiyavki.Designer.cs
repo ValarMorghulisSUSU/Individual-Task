@@ -1,7 +1,7 @@
 ﻿
 namespace ID
 {
-    partial class Fond
+    partial class Neiyavki
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace ID
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Fond));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Neiyavki));
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -43,35 +43,35 @@ namespace ID
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.коднDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.сотрудникDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.фамилияИОDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.сотрудникиBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iDDataSet = new ID.IDDataSet();
+            this.неявкиПоЗаконуDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.неявкиСРазрешенияАдминистрацииDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.неявкиПоДругимПричинамDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sotrneiyavBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.sotrneiyavTableAdapter = new ID.IDDataSetTableAdapters.sotrneiyavTableAdapter();
+            this.сотрудникиTableAdapter = new ID.IDDataSetTableAdapters.СотрудникиTableAdapter();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.фамилияИОDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.фондРабочегоВремениDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.кодФDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.сотрудникDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.фамилияИОDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.сотрудникиBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iDDataSet = new ID.IDDataSet();
-            this.фондРабочегоВремениDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sotrfondBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sotrfondTableAdapter = new ID.IDDataSetTableAdapters.sotrfondTableAdapter();
-            this.сотрудникиTableAdapter = new ID.IDDataSetTableAdapters.СотрудникиTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникиBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iDDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sotrfondBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sotrneiyavBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.bindingNavigator1.BindingSource = this.sotrfondBindingSource;
+            this.bindingNavigator1.BindingSource = this.sotrneiyavBindingSource;
             this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
             this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -98,7 +98,7 @@ namespace ID
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(807, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(751, 25);
             this.bindingNavigator1.TabIndex = 0;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -188,6 +188,89 @@ namespace ID
             this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.коднDataGridViewTextBoxColumn,
+            this.сотрудникDataGridViewTextBoxColumn,
+            this.фамилияИОDataGridViewTextBoxColumn,
+            this.неявкиПоЗаконуDataGridViewTextBoxColumn,
+            this.неявкиСРазрешенияАдминистрацииDataGridViewTextBoxColumn,
+            this.неявкиПоДругимПричинамDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.sotrneiyavBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 28);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(722, 410);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // коднDataGridViewTextBoxColumn
+            // 
+            this.коднDataGridViewTextBoxColumn.DataPropertyName = "Код_н";
+            this.коднDataGridViewTextBoxColumn.HeaderText = "Код_н";
+            this.коднDataGridViewTextBoxColumn.Name = "коднDataGridViewTextBoxColumn";
+            this.коднDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // сотрудникDataGridViewTextBoxColumn
+            // 
+            this.сотрудникDataGridViewTextBoxColumn.DataPropertyName = "Сотрудник";
+            this.сотрудникDataGridViewTextBoxColumn.HeaderText = "Сотрудник";
+            this.сотрудникDataGridViewTextBoxColumn.Name = "сотрудникDataGridViewTextBoxColumn";
+            this.сотрудникDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // фамилияИОDataGridViewTextBoxColumn
+            // 
+            this.фамилияИОDataGridViewTextBoxColumn.DataPropertyName = "Сотрудник";
+            this.фамилияИОDataGridViewTextBoxColumn.DataSource = this.сотрудникиBindingSource;
+            this.фамилияИОDataGridViewTextBoxColumn.DisplayMember = "ФамилияИО";
+            this.фамилияИОDataGridViewTextBoxColumn.HeaderText = "ФамилияИО";
+            this.фамилияИОDataGridViewTextBoxColumn.Name = "фамилияИОDataGridViewTextBoxColumn";
+            this.фамилияИОDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.фамилияИОDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.фамилияИОDataGridViewTextBoxColumn.ValueMember = "Код_С";
+            // 
+            // сотрудникиBindingSource
+            // 
+            this.сотрудникиBindingSource.DataMember = "Сотрудники";
+            this.сотрудникиBindingSource.DataSource = this.iDDataSet;
+            // 
+            // iDDataSet
+            // 
+            this.iDDataSet.DataSetName = "IDDataSet";
+            this.iDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // неявкиПоЗаконуDataGridViewTextBoxColumn
+            // 
+            this.неявкиПоЗаконуDataGridViewTextBoxColumn.DataPropertyName = "Неявки по закону";
+            this.неявкиПоЗаконуDataGridViewTextBoxColumn.HeaderText = "Неявки по закону";
+            this.неявкиПоЗаконуDataGridViewTextBoxColumn.Name = "неявкиПоЗаконуDataGridViewTextBoxColumn";
+            // 
+            // неявкиСРазрешенияАдминистрацииDataGridViewTextBoxColumn
+            // 
+            this.неявкиСРазрешенияАдминистрацииDataGridViewTextBoxColumn.DataPropertyName = "Неявки с разрешения администрации";
+            this.неявкиСРазрешенияАдминистрацииDataGridViewTextBoxColumn.HeaderText = "Неявки с разрешения администрации";
+            this.неявкиСРазрешенияАдминистрацииDataGridViewTextBoxColumn.Name = "неявкиСРазрешенияАдминистрацииDataGridViewTextBoxColumn";
+            // 
+            // неявкиПоДругимПричинамDataGridViewTextBoxColumn
+            // 
+            this.неявкиПоДругимПричинамDataGridViewTextBoxColumn.DataPropertyName = "Неявки по другим причинам";
+            this.неявкиПоДругимПричинамDataGridViewTextBoxColumn.HeaderText = "Неявки по другим причинам";
+            this.неявкиПоДругимПричинамDataGridViewTextBoxColumn.Name = "неявкиПоДругимПричинамDataGridViewTextBoxColumn";
+            // 
+            // sotrneiyavBindingSource
+            // 
+            this.sotrneiyavBindingSource.DataMember = "sotrneiyav";
+            this.sotrneiyavBindingSource.DataSource = this.iDDataSet;
+            // 
+            // sotrneiyavTableAdapter
+            // 
+            this.sotrneiyavTableAdapter.ClearBeforeFill = true;
+            // 
+            // сотрудникиTableAdapter
+            // 
+            this.сотрудникиTableAdapter.ClearBeforeFill = true;
+            // 
             // toolStripButton1
             // 
             this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -202,9 +285,11 @@ namespace ID
             // 
             this.toolStripComboBox1.Items.AddRange(new object[] {
             "ФамилияИО",
-            "ФондРабочегоВремени"});
+            "Неявки по закону",
+            "Неявки с разрешения администрации",
+            "Неявки по другим причинам"});
             this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 25);
+            this.toolStripComboBox1.Size = new System.Drawing.Size(300, 25);
             // 
             // toolStripTextBox1
             // 
@@ -232,106 +317,23 @@ namespace ID
             this.toolStripButton3.Text = "Отменить фильтрацию";
             this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // фамилияИОDataGridViewTextBoxColumn
-            // 
-            this.фамилияИОDataGridViewTextBoxColumn.DataPropertyName = "Сотрудник";
-            this.фамилияИОDataGridViewTextBoxColumn.HeaderText = "ФамилияИО";
-            this.фамилияИОDataGridViewTextBoxColumn.Name = "фамилияИОDataGridViewTextBoxColumn";
-            this.фамилияИОDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.фамилияИОDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // фондРабочегоВремениDataGridViewTextBoxColumn
-            // 
-            this.фондРабочегоВремениDataGridViewTextBoxColumn.DataPropertyName = "ФондРабочегоВремени";
-            this.фондРабочегоВремениDataGridViewTextBoxColumn.HeaderText = "ФондРабочегоВремени";
-            this.фондРабочегоВремениDataGridViewTextBoxColumn.Name = "фондРабочегоВремениDataGridViewTextBoxColumn";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.кодФDataGridViewTextBoxColumn,
-            this.сотрудникDataGridViewTextBoxColumn,
-            this.фамилияИОDataGridViewTextBoxColumn1,
-            this.фондРабочегоВремениDataGridViewTextBoxColumn1});
-            this.dataGridView1.DataSource = this.sotrfondBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 48);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(519, 273);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // кодФDataGridViewTextBoxColumn
-            // 
-            this.кодФDataGridViewTextBoxColumn.DataPropertyName = "Код_Ф";
-            this.кодФDataGridViewTextBoxColumn.HeaderText = "Код_Ф";
-            this.кодФDataGridViewTextBoxColumn.Name = "кодФDataGridViewTextBoxColumn";
-            this.кодФDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // сотрудникDataGridViewTextBoxColumn
-            // 
-            this.сотрудникDataGridViewTextBoxColumn.DataPropertyName = "Сотрудник";
-            this.сотрудникDataGridViewTextBoxColumn.HeaderText = "Сотрудник";
-            this.сотрудникDataGridViewTextBoxColumn.Name = "сотрудникDataGridViewTextBoxColumn";
-            this.сотрудникDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // фамилияИОDataGridViewTextBoxColumn1
-            // 
-            this.фамилияИОDataGridViewTextBoxColumn1.DataPropertyName = "Сотрудник";
-            this.фамилияИОDataGridViewTextBoxColumn1.DataSource = this.сотрудникиBindingSource;
-            this.фамилияИОDataGridViewTextBoxColumn1.DisplayMember = "ФамилияИО";
-            this.фамилияИОDataGridViewTextBoxColumn1.HeaderText = "ФамилияИО";
-            this.фамилияИОDataGridViewTextBoxColumn1.Name = "фамилияИОDataGridViewTextBoxColumn1";
-            this.фамилияИОDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.фамилияИОDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.фамилияИОDataGridViewTextBoxColumn1.ValueMember = "Код_С";
-            // 
-            // сотрудникиBindingSource
-            // 
-            this.сотрудникиBindingSource.DataMember = "Сотрудники";
-            this.сотрудникиBindingSource.DataSource = this.iDDataSet;
-            // 
-            // iDDataSet
-            // 
-            this.iDDataSet.DataSetName = "IDDataSet";
-            this.iDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // фондРабочегоВремениDataGridViewTextBoxColumn1
-            // 
-            this.фондРабочегоВремениDataGridViewTextBoxColumn1.DataPropertyName = "ФондРабочегоВремени";
-            this.фондРабочегоВремениDataGridViewTextBoxColumn1.HeaderText = "ФондРабочегоВремени";
-            this.фондРабочегоВремениDataGridViewTextBoxColumn1.Name = "фондРабочегоВремениDataGridViewTextBoxColumn1";
-            // 
-            // sotrfondBindingSource
-            // 
-            this.sotrfondBindingSource.DataMember = "sotrfond";
-            this.sotrfondBindingSource.DataSource = this.iDDataSet;
-            // 
-            // sotrfondTableAdapter
-            // 
-            this.sotrfondTableAdapter.ClearBeforeFill = true;
-            // 
-            // сотрудникиTableAdapter
-            // 
-            this.сотрудникиTableAdapter.ClearBeforeFill = true;
-            // 
-            // Fond
+            // Neiyavki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 399);
+            this.ClientSize = new System.Drawing.Size(751, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.bindingNavigator1);
-            this.Name = "Fond";
-            this.Text = "Fond";
-            this.Load += new System.EventHandler(this.Fond_Load);
+            this.Name = "Neiyavki";
+            this.Text = "Neiyavki";
+            this.Load += new System.EventHandler(this.Neiyavki_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникиBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iDDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sotrfondBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sotrneiyavBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,22 +353,22 @@ namespace ID
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private IDDataSet iDDataSet;
+        private System.Windows.Forms.BindingSource sotrneiyavBindingSource;
+        private IDDataSetTableAdapters.sotrneiyavTableAdapter sotrneiyavTableAdapter;
+        private System.Windows.Forms.BindingSource сотрудникиBindingSource;
+        private IDDataSetTableAdapters.СотрудникиTableAdapter сотрудникиTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn коднDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn сотрудникDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn фамилияИОDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn неявкиПоЗаконуDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn неявкиСРазрешенияАдминистрацииDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn неявкиПоДругимПричинамDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.DataGridViewComboBoxColumn фамилияИОDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn фондРабочегоВремениDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private IDDataSet iDDataSet;
-        private System.Windows.Forms.BindingSource sotrfondBindingSource;
-        private IDDataSetTableAdapters.sotrfondTableAdapter sotrfondTableAdapter;
-        private System.Windows.Forms.BindingSource сотрудникиBindingSource;
-        private IDDataSetTableAdapters.СотрудникиTableAdapter сотрудникиTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn кодФDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn сотрудникDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn фамилияИОDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn фондРабочегоВремениDataGridViewTextBoxColumn1;
     }
 }

@@ -66,6 +66,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IDDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Neiyavki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Neiyavki.Designer.cs">
+      <DependentUpon>Neiyavki.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sotrudniki.cs">
@@ -79,6 +85,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Neiyavki.resx">
+      <DependentUpon>Neiyavki.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

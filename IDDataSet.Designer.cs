@@ -36,13 +36,17 @@ namespace ID {
         
         private sotrfondDataTable tablesotrfond;
         
-        private global::System.Data.DataRelation relationСотрудникиНеявки;
+        private sotrneiyavDataTable tablesotrneiyav;
         
         private global::System.Data.DataRelation relationСотрудникиФонд;
         
         private global::System.Data.DataRelation relationСотрудники_Ведомость_ф_р_в;
         
         private global::System.Data.DataRelation relationСотрудники_Сумма_неявок;
+        
+        private global::System.Data.DataRelation relationСотрудникиНеявки;
+        
+        private global::System.Data.DataRelation relationСотрудникиНеявки1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -89,6 +93,9 @@ namespace ID {
                 }
                 if ((ds.Tables["sotrfond"] != null)) {
                     base.Tables.Add(new sotrfondDataTable(ds.Tables["sotrfond"]));
+                }
+                if ((ds.Tables["sotrneiyav"] != null)) {
+                    base.Tables.Add(new sotrneiyavDataTable(ds.Tables["sotrneiyav"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -165,6 +172,16 @@ namespace ID {
         public sotrfondDataTable sotrfond {
             get {
                 return this.tablesotrfond;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public sotrneiyavDataTable sotrneiyav {
+            get {
+                return this.tablesotrneiyav;
             }
         }
         
@@ -253,6 +270,9 @@ namespace ID {
                 if ((ds.Tables["sotrfond"] != null)) {
                     base.Tables.Add(new sotrfondDataTable(ds.Tables["sotrfond"]));
                 }
+                if ((ds.Tables["sotrneiyav"] != null)) {
+                    base.Tables.Add(new sotrneiyavDataTable(ds.Tables["sotrneiyav"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -322,10 +342,17 @@ namespace ID {
                     this.tablesotrfond.InitVars();
                 }
             }
-            this.relationСотрудникиНеявки = this.Relations["СотрудникиНеявки"];
+            this.tablesotrneiyav = ((sotrneiyavDataTable)(base.Tables["sotrneiyav"]));
+            if ((initTable == true)) {
+                if ((this.tablesotrneiyav != null)) {
+                    this.tablesotrneiyav.InitVars();
+                }
+            }
             this.relationСотрудникиФонд = this.Relations["СотрудникиФонд"];
             this.relationСотрудники_Ведомость_ф_р_в = this.Relations["Сотрудники_Ведомость ф_р_в"];
             this.relationСотрудники_Сумма_неявок = this.Relations["Сотрудники_Сумма неявок"];
+            this.relationСотрудникиНеявки = this.Relations["СотрудникиНеявки"];
+            this.relationСотрудникиНеявки1 = this.Relations["СотрудникиНеявки1"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -348,10 +375,8 @@ namespace ID {
             base.Tables.Add(this.tableСумма_неявок);
             this.tablesotrfond = new sotrfondDataTable();
             base.Tables.Add(this.tablesotrfond);
-            this.relationСотрудникиНеявки = new global::System.Data.DataRelation("СотрудникиНеявки", new global::System.Data.DataColumn[] {
-                        this.tableСотрудники.Код_СColumn}, new global::System.Data.DataColumn[] {
-                        this.tableНеявки.ФамилияИОColumn}, false);
-            this.Relations.Add(this.relationСотрудникиНеявки);
+            this.tablesotrneiyav = new sotrneiyavDataTable();
+            base.Tables.Add(this.tablesotrneiyav);
             this.relationСотрудникиФонд = new global::System.Data.DataRelation("СотрудникиФонд", new global::System.Data.DataColumn[] {
                         this.tableСотрудники.Код_СColumn}, new global::System.Data.DataColumn[] {
                         this.tableФонд.СотрудникColumn}, false);
@@ -364,6 +389,14 @@ namespace ID {
                         this.tableСотрудники.Код_СColumn}, new global::System.Data.DataColumn[] {
                         this.tableСумма_неявок.ФамилияИОColumn}, false);
             this.Relations.Add(this.relationСотрудники_Сумма_неявок);
+            this.relationСотрудникиНеявки = new global::System.Data.DataRelation("СотрудникиНеявки", new global::System.Data.DataColumn[] {
+                        this.tableСотрудники.Код_СColumn}, new global::System.Data.DataColumn[] {
+                        this.tableНеявки.СотрудникColumn}, false);
+            this.Relations.Add(this.relationСотрудникиНеявки);
+            this.relationСотрудникиНеявки1 = new global::System.Data.DataRelation("СотрудникиНеявки1", new global::System.Data.DataColumn[] {
+                        this.tableСотрудники.Код_СColumn}, new global::System.Data.DataColumn[] {
+                        this.tablesotrneiyav.СотрудникColumn}, false);
+            this.Relations.Add(this.relationСотрудникиНеявки1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -399,6 +432,12 @@ namespace ID {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializesotrfond() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private bool ShouldSerializesotrneiyav() {
             return false;
         }
         
@@ -475,6 +514,9 @@ namespace ID {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void sotrfondRowChangeEventHandler(object sender, sotrfondRowChangeEvent e);
         
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public delegate void sotrneiyavRowChangeEventHandler(object sender, sotrneiyavRowChangeEvent e);
+        
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
@@ -484,13 +526,13 @@ namespace ID {
             
             private global::System.Data.DataColumn columnКод_н;
             
-            private global::System.Data.DataColumn columnФамилияИО;
-            
             private global::System.Data.DataColumn columnНеявки_по_закону;
             
             private global::System.Data.DataColumn columnНеявки_с_разрешения_администрации;
             
             private global::System.Data.DataColumn columnНеявки_по_другим_причинам;
+            
+            private global::System.Data.DataColumn columnСотрудник;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -535,14 +577,6 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ФамилияИОColumn {
-                get {
-                    return this.columnФамилияИО;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn Неявки_по_законуColumn {
                 get {
                     return this.columnНеявки_по_закону;
@@ -562,6 +596,14 @@ namespace ID {
             public global::System.Data.DataColumn Неявки_по_другим_причинамColumn {
                 get {
                     return this.columnНеявки_по_другим_причинам;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn СотрудникColumn {
+                get {
+                    return this.columnСотрудник;
                 }
             }
             
@@ -602,16 +644,16 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public НеявкиRow AddНеявкиRow(СотрудникиRow parentСотрудникиRowByСотрудникиНеявки, int Неявки_по_закону, int Неявки_с_разрешения_администрации, int Неявки_по_другим_причинам) {
+            public НеявкиRow AddНеявкиRow(int Неявки_по_закону, int Неявки_с_разрешения_администрации, int Неявки_по_другим_причинам, СотрудникиRow parentСотрудникиRowByСотрудникиНеявки) {
                 НеявкиRow rowНеявкиRow = ((НеявкиRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null,
                         Неявки_по_закону,
                         Неявки_с_разрешения_администрации,
-                        Неявки_по_другим_причинам};
+                        Неявки_по_другим_причинам,
+                        null};
                 if ((parentСотрудникиRowByСотрудникиНеявки != null)) {
-                    columnValuesArray[1] = parentСотрудникиRowByСотрудникиНеявки[0];
+                    columnValuesArray[4] = parentСотрудникиRowByСотрудникиНеявки[0];
                 }
                 rowНеявкиRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowНеявкиRow);
@@ -643,10 +685,10 @@ namespace ID {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnКод_н = base.Columns["Код_н"];
-                this.columnФамилияИО = base.Columns["ФамилияИО"];
                 this.columnНеявки_по_закону = base.Columns["Неявки по закону"];
                 this.columnНеявки_с_разрешения_администрации = base.Columns["Неявки с разрешения администрации"];
                 this.columnНеявки_по_другим_причинам = base.Columns["Неявки по другим причинам"];
+                this.columnСотрудник = base.Columns["Сотрудник"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -654,14 +696,14 @@ namespace ID {
             private void InitClass() {
                 this.columnКод_н = new global::System.Data.DataColumn("Код_н", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnКод_н);
-                this.columnФамилияИО = new global::System.Data.DataColumn("ФамилияИО", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnФамилияИО);
                 this.columnНеявки_по_закону = new global::System.Data.DataColumn("Неявки по закону", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnНеявки_по_закону);
                 this.columnНеявки_с_разрешения_администрации = new global::System.Data.DataColumn("Неявки с разрешения администрации", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnНеявки_с_разрешения_администрации);
                 this.columnНеявки_по_другим_причинам = new global::System.Data.DataColumn("Неявки по другим причинам", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnНеявки_по_другим_причинам);
+                this.columnСотрудник = new global::System.Data.DataColumn("Сотрудник", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnСотрудник);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnКод_н}, true));
                 this.columnКод_н.AutoIncrement = true;
@@ -2217,6 +2259,330 @@ namespace ID {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class sotrneiyavDataTable : global::System.Data.TypedTableBase<sotrneiyavRow> {
+            
+            private global::System.Data.DataColumn columnКод_н;
+            
+            private global::System.Data.DataColumn columnСотрудник;
+            
+            private global::System.Data.DataColumn columnФамилияИО;
+            
+            private global::System.Data.DataColumn columnНеявки_по_закону;
+            
+            private global::System.Data.DataColumn columnНеявки_с_разрешения_администрации;
+            
+            private global::System.Data.DataColumn columnНеявки_по_другим_причинам;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public sotrneiyavDataTable() {
+                this.TableName = "sotrneiyav";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal sotrneiyavDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected sotrneiyavDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Код_нColumn {
+                get {
+                    return this.columnКод_н;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn СотрудникColumn {
+                get {
+                    return this.columnСотрудник;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ФамилияИОColumn {
+                get {
+                    return this.columnФамилияИО;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Неявки_по_законуColumn {
+                get {
+                    return this.columnНеявки_по_закону;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Неявки_с_разрешения_администрацииColumn {
+                get {
+                    return this.columnНеявки_с_разрешения_администрации;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn Неявки_по_другим_причинамColumn {
+                get {
+                    return this.columnНеявки_по_другим_причинам;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public sotrneiyavRow this[int index] {
+                get {
+                    return ((sotrneiyavRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event sotrneiyavRowChangeEventHandler sotrneiyavRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event sotrneiyavRowChangeEventHandler sotrneiyavRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event sotrneiyavRowChangeEventHandler sotrneiyavRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public event sotrneiyavRowChangeEventHandler sotrneiyavRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void AddsotrneiyavRow(sotrneiyavRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public sotrneiyavRow AddsotrneiyavRow(СотрудникиRow parentСотрудникиRowByСотрудникиНеявки1, string ФамилияИО, int Неявки_по_закону, int Неявки_с_разрешения_администрации, int Неявки_по_другим_причинам) {
+                sotrneiyavRow rowsotrneiyavRow = ((sotrneiyavRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        ФамилияИО,
+                        Неявки_по_закону,
+                        Неявки_с_разрешения_администрации,
+                        Неявки_по_другим_причинам};
+                if ((parentСотрудникиRowByСотрудникиНеявки1 != null)) {
+                    columnValuesArray[1] = parentСотрудникиRowByСотрудникиНеявки1[0];
+                }
+                rowsotrneiyavRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowsotrneiyavRow);
+                return rowsotrneiyavRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                sotrneiyavDataTable cln = ((sotrneiyavDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new sotrneiyavDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal void InitVars() {
+                this.columnКод_н = base.Columns["Код_н"];
+                this.columnСотрудник = base.Columns["Сотрудник"];
+                this.columnФамилияИО = base.Columns["ФамилияИО"];
+                this.columnНеявки_по_закону = base.Columns["Неявки по закону"];
+                this.columnНеявки_с_разрешения_администрации = base.Columns["Неявки с разрешения администрации"];
+                this.columnНеявки_по_другим_причинам = base.Columns["Неявки по другим причинам"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            private void InitClass() {
+                this.columnКод_н = new global::System.Data.DataColumn("Код_н", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnКод_н);
+                this.columnСотрудник = new global::System.Data.DataColumn("Сотрудник", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnСотрудник);
+                this.columnФамилияИО = new global::System.Data.DataColumn("ФамилияИО", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnФамилияИО);
+                this.columnНеявки_по_закону = new global::System.Data.DataColumn("Неявки по закону", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnНеявки_по_закону);
+                this.columnНеявки_с_разрешения_администрации = new global::System.Data.DataColumn("Неявки с разрешения администрации", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnНеявки_с_разрешения_администрации);
+                this.columnНеявки_по_другим_причинам = new global::System.Data.DataColumn("Неявки по другим причинам", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnНеявки_по_другим_причинам);
+                this.columnКод_н.AutoIncrement = true;
+                this.columnКод_н.AutoIncrementSeed = -1;
+                this.columnКод_н.AutoIncrementStep = -1;
+                this.columnФамилияИО.MaxLength = 255;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public sotrneiyavRow NewsotrneiyavRow() {
+                return ((sotrneiyavRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new sotrneiyavRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(sotrneiyavRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.sotrneiyavRowChanged != null)) {
+                    this.sotrneiyavRowChanged(this, new sotrneiyavRowChangeEvent(((sotrneiyavRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.sotrneiyavRowChanging != null)) {
+                    this.sotrneiyavRowChanging(this, new sotrneiyavRowChangeEvent(((sotrneiyavRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.sotrneiyavRowDeleted != null)) {
+                    this.sotrneiyavRowDeleted(this, new sotrneiyavRowChangeEvent(((sotrneiyavRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.sotrneiyavRowDeleting != null)) {
+                    this.sotrneiyavRowDeleting(this, new sotrneiyavRowChangeEvent(((sotrneiyavRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void RemovesotrneiyavRow(sotrneiyavRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                IDDataSet ds = new IDDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "sotrneiyavDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class НеявкиRow : global::System.Data.DataRow {
@@ -2238,22 +2604,6 @@ namespace ID {
                 }
                 set {
                     this[this.tableНеявки.Код_нColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int ФамилияИО {
-                get {
-                    try {
-                        return ((int)(this[this.tableНеявки.ФамилияИОColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ФамилияИО\' в таблице \'Неявки\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableНеявки.ФамилияИОColumn] = value;
                 }
             }
             
@@ -2309,6 +2659,22 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Сотрудник {
+                get {
+                    try {
+                        return ((int)(this[this.tableНеявки.СотрудникColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Сотрудник\' в таблице \'Неявки\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableНеявки.СотрудникColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public СотрудникиRow СотрудникиRow {
                 get {
                     return ((СотрудникиRow)(this.GetParentRow(this.Table.ParentRelations["СотрудникиНеявки"])));
@@ -2316,18 +2682,6 @@ namespace ID {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["СотрудникиНеявки"]);
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsФамилияИОNull() {
-                return this.IsNull(this.tableНеявки.ФамилияИОColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetФамилияИОNull() {
-                this[this.tableНеявки.ФамилияИОColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2364,6 +2718,18 @@ namespace ID {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetНеявки_по_другим_причинамNull() {
                 this[this.tableНеявки.Неявки_по_другим_причинамColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsСотрудникNull() {
+                return this.IsNull(this.tableНеявки.СотрудникColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetСотрудникNull() {
+                this[this.tableНеявки.СотрудникColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2422,17 +2788,6 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public НеявкиRow[] GetНеявкиRows() {
-                if ((this.Table.ChildRelations["СотрудникиНеявки"] == null)) {
-                    return new НеявкиRow[0];
-                }
-                else {
-                    return ((НеявкиRow[])(base.GetChildRows(this.Table.ChildRelations["СотрудникиНеявки"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public ФондRow[] GetФондRows() {
                 if ((this.Table.ChildRelations["СотрудникиФонд"] == null)) {
                     return new ФондRow[0];
@@ -2461,6 +2816,28 @@ namespace ID {
                 }
                 else {
                     return ((Сумма_неявокRow[])(base.GetChildRows(this.Table.ChildRelations["Сотрудники_Сумма неявок"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public НеявкиRow[] GetНеявкиRows() {
+                if ((this.Table.ChildRelations["СотрудникиНеявки"] == null)) {
+                    return new НеявкиRow[0];
+                }
+                else {
+                    return ((НеявкиRow[])(base.GetChildRows(this.Table.ChildRelations["СотрудникиНеявки"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public sotrneiyavRow[] GetsotrneiyavRows() {
+                if ((this.Table.ChildRelations["СотрудникиНеявки1"] == null)) {
+                    return new sotrneiyavRow[0];
+                }
+                else {
+                    return ((sotrneiyavRow[])(base.GetChildRows(this.Table.ChildRelations["СотрудникиНеявки1"])));
                 }
             }
         }
@@ -2907,6 +3284,202 @@ namespace ID {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class sotrneiyavRow : global::System.Data.DataRow {
+            
+            private sotrneiyavDataTable tablesotrneiyav;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            internal sotrneiyavRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablesotrneiyav = ((sotrneiyavDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Код_н {
+                get {
+                    try {
+                        return ((int)(this[this.tablesotrneiyav.Код_нColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Код_н\' в таблице \'sotrneiyav\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesotrneiyav.Код_нColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Сотрудник {
+                get {
+                    try {
+                        return ((int)(this[this.tablesotrneiyav.СотрудникColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Сотрудник\' в таблице \'sotrneiyav\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesotrneiyav.СотрудникColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ФамилияИО {
+                get {
+                    try {
+                        return ((string)(this[this.tablesotrneiyav.ФамилияИОColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ФамилияИО\' в таблице \'sotrneiyav\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesotrneiyav.ФамилияИОColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Неявки_по_закону {
+                get {
+                    try {
+                        return ((int)(this[this.tablesotrneiyav.Неявки_по_законуColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Неявки по закону\' в таблице \'sotrneiyav\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesotrneiyav.Неявки_по_законуColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Неявки_с_разрешения_администрации {
+                get {
+                    try {
+                        return ((int)(this[this.tablesotrneiyav.Неявки_с_разрешения_администрацииColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Неявки с разрешения администрации\' в таблице \'sotrneiyav\' р" +
+                                "авно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesotrneiyav.Неявки_с_разрешения_администрацииColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int Неявки_по_другим_причинам {
+                get {
+                    try {
+                        return ((int)(this[this.tablesotrneiyav.Неявки_по_другим_причинамColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Неявки по другим причинам\' в таблице \'sotrneiyav\' равно DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablesotrneiyav.Неявки_по_другим_причинамColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public СотрудникиRow СотрудникиRow {
+                get {
+                    return ((СотрудникиRow)(this.GetParentRow(this.Table.ParentRelations["СотрудникиНеявки1"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["СотрудникиНеявки1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsКод_нNull() {
+                return this.IsNull(this.tablesotrneiyav.Код_нColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetКод_нNull() {
+                this[this.tablesotrneiyav.Код_нColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsСотрудникNull() {
+                return this.IsNull(this.tablesotrneiyav.СотрудникColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetСотрудникNull() {
+                this[this.tablesotrneiyav.СотрудникColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsФамилияИОNull() {
+                return this.IsNull(this.tablesotrneiyav.ФамилияИОColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetФамилияИОNull() {
+                this[this.tablesotrneiyav.ФамилияИОColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsНеявки_по_законуNull() {
+                return this.IsNull(this.tablesotrneiyav.Неявки_по_законуColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetНеявки_по_законуNull() {
+                this[this.tablesotrneiyav.Неявки_по_законуColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsНеявки_с_разрешения_администрацииNull() {
+                return this.IsNull(this.tablesotrneiyav.Неявки_с_разрешения_администрацииColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetНеявки_с_разрешения_администрацииNull() {
+                this[this.tablesotrneiyav.Неявки_с_разрешения_администрацииColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsНеявки_по_другим_причинамNull() {
+                return this.IsNull(this.tablesotrneiyav.Неявки_по_другим_причинамColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetНеявки_по_другим_причинамNull() {
+                this[this.tablesotrneiyav.Неявки_по_другим_причинамColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -3109,6 +3682,40 @@ namespace ID {
                 }
             }
         }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public class sotrneiyavRowChangeEvent : global::System.EventArgs {
+            
+            private sotrneiyavRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public sotrneiyavRowChangeEvent(sotrneiyavRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public sotrneiyavRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
     }
 }
 namespace ID.IDDataSetTableAdapters {
@@ -3236,18 +3843,18 @@ namespace ID.IDDataSetTableAdapters {
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Неявки";
             tableMapping.ColumnMappings.Add("Код_н", "Код_н");
-            tableMapping.ColumnMappings.Add("ФамилияИО", "ФамилияИО");
             tableMapping.ColumnMappings.Add("Неявки по закону", "Неявки по закону");
             tableMapping.ColumnMappings.Add("Неявки с разрешения администрации", "Неявки с разрешения администрации");
             tableMapping.ColumnMappings.Add("Неявки по другим причинам", "Неявки по другим причинам");
+            tableMapping.ColumnMappings.Add("Сотрудник", "Сотрудник");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `Неявки` WHERE ((`Код_н` = ?) AND ((? = 1 AND `ФамилияИО` IS NULL) OR (`ФамилияИО` = ?)) AND ((? = 1 AND `Неявки по закону` IS NULL) OR (`Неявки по закону` = ?)) AND ((? = 1 AND `Неявки с разрешения администрации` IS NULL) OR (`Неявки с разрешения администрации` = ?)) AND ((? = 1 AND `Неявки по другим причинам` IS NULL) OR (`Неявки по другим причинам` = ?)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM `Неявки` WHERE ((`Код_н` = ?) AND ((? = 1 AND `Сотрудник` IS NULL) OR (`Сотрудник` = ?)) AND ((? = 1 AND `Неявки по закону` IS NULL) OR (`Неявки по закону` = ?)) AND ((? = 1 AND `Неявки с разрешения администрации` IS NULL) OR (`Неявки с разрешения администрации` = ?)) AND ((? = 1 AND `Неявки по другим причинам` IS NULL) OR (`Неявки по другим причинам` = ?)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Код_н", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Код_н", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_ФамилияИО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ФамилияИО", global::System.Data.DataRowVersion.Original, true, null));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ФамилияИО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ФамилияИО", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Сотрудник", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Сотрудник", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Неявки_по_закону", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по закону", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Неявки_по_закону", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по закону", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Неявки_с_разрешения_администрации", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки с разрешения администрации", global::System.Data.DataRowVersion.Original, true, null));
@@ -3256,37 +3863,30 @@ namespace ID.IDDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Неявки_по_другим_причинам", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Original, false, null));
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO Неявки\r\n                         (ФамилияИО, [Неявки по закону], [Нея" +
-                "вки с разрешения администрации], [Неявки по другим причинам])\r\nVALUES        (?," +
-                " ?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO `Неявки` (`Сотрудник`, `Неявки по закону`, `Неявки с разрешения админ" +
+                "истрации`, `Неявки по другим причинам`) VALUES (?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ФамилияИО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ФамилияИО", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Сотрудник", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_закону", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по закону", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_с_разрешения_администрации", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки с разрешения администрации", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_другим_причинам", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE       Неявки
-SET                ФамилияИО = ?, [Неявки по закону] = ?, [Неявки с разрешения администрации] = ?, [Неявки по другим причинам] = ?
-WHERE        ([Код_н] = ?) AND (? = 1 AND ФамилияИО IS NULL OR
-                         ФамилияИО = ?) AND (? = 1 AND [Неявки по закону] IS NULL OR
-                         [Неявки по закону] = ?) AND (? = 1 AND [Неявки с разрешения администрации] IS NULL OR
-                         [Неявки с разрешения администрации] = ?) AND (? = 1 AND [Неявки по другим причинам] IS NULL OR
-                         [Неявки по другим причинам] = ?)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE `Неявки` SET `Сотрудник` = ?, `Неявки по закону` = ?, `Неявки с разрешения администрации` = ?, `Неявки по другим причинам` = ? WHERE ((`Код_н` = ?) AND ((? = 1 AND `Сотрудник` IS NULL) OR (`Сотрудник` = ?)) AND ((? = 1 AND `Неявки по закону` IS NULL) OR (`Неявки по закону` = ?)) AND ((? = 1 AND `Неявки с разрешения администрации` IS NULL) OR (`Неявки с разрешения администрации` = ?)) AND ((? = 1 AND `Неявки по другим причинам` IS NULL) OR (`Неявки по другим причинам` = ?)))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("ФамилияИО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ФамилияИО", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Сотрудник", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_закону", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по закону", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_с_разрешения_администрации", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки с разрешения администрации", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_другим_причинам", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Код_н", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Код_н", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ФамилияИО", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ФамилияИО", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_ФамилияИО1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "ФамилияИО", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Сотрудник", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Original, true, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Сотрудник", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Неявки_по_закону", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по закону", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Неявки_по_закону", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по закону", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Неявки_по_закону1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по закону", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Неявки_с_разрешения_администрации", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки с разрешения администрации", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Неявки_с_разрешения_администрации", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки с разрешения администрации", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Неявки_с_разрешения_администрации1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки с разрешения администрации", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("IsNull_Неявки_по_другим_причинам", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Original, true, null));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Неявки_по_другим_причинам", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Original, false, null));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Неявки_по_другим_причинам1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Original, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3302,7 +3902,7 @@ WHERE        ([Код_н] = ?) AND (? = 1 AND ФамилияИО IS NULL OR
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Код_н, ФамилияИО, [Неявки по закону], [Неявки с разрешения администрации]," +
+            this._commandCollection[0].CommandText = "SELECT Код_н, Сотрудник, [Неявки по закону], [Неявки с разрешения администрации]," +
                 " [Неявки по другим причинам] FROM Неявки";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
@@ -3364,11 +3964,11 @@ WHERE        ([Код_н] = ?) AND (? = 1 AND ФамилияИО IS NULL OR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Код_н, global::System.Nullable<int> Original_ФамилияИО, global::System.Nullable<int> Original_Неявки_по_закону, global::System.Nullable<int> Original_Неявки_с_разрешения_администрации, global::System.Nullable<int> Original_Неявки_по_другим_причинам) {
+        public virtual int Delete(int Original_Код_н, global::System.Nullable<int> Original_Сотрудник, global::System.Nullable<int> Original_Неявки_по_закону, global::System.Nullable<int> Original_Неявки_с_разрешения_администрации, global::System.Nullable<int> Original_Неявки_по_другим_причинам) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Код_н));
-            if ((Original_ФамилияИО.HasValue == true)) {
+            if ((Original_Сотрудник.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_ФамилияИО.Value));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Сотрудник.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -3418,9 +4018,9 @@ WHERE        ([Код_н] = ?) AND (? = 1 AND ФамилияИО IS NULL OR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> ФамилияИО, global::System.Nullable<int> Неявки_по_закону, global::System.Nullable<int> Неявки_с_разрешения_администрации, global::System.Nullable<int> Неявки_по_другим_причинам) {
-            if ((ФамилияИО.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ФамилияИО.Value));
+        public virtual int Insert(global::System.Nullable<int> Сотрудник, global::System.Nullable<int> Неявки_по_закону, global::System.Nullable<int> Неявки_с_разрешения_администрации, global::System.Nullable<int> Неявки_по_другим_причинам) {
+            if ((Сотрудник.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Сотрудник.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -3463,9 +4063,9 @@ WHERE        ([Код_н] = ?) AND (? = 1 AND ФамилияИО IS NULL OR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<int> ФамилияИО, global::System.Nullable<int> Неявки_по_закону, global::System.Nullable<int> Неявки_с_разрешения_администрации, global::System.Nullable<int> Неявки_по_другим_причинам, int Original_Код_н, global::System.Nullable<int> Original_ФамилияИО, global::System.Nullable<int> Original_ФамилияИО1, global::System.Nullable<int> Original_Неявки_по_закону, global::System.Nullable<int> Original_Неявки_по_закону1, global::System.Nullable<int> Original_Неявки_с_разрешения_администрации, global::System.Nullable<int> Original_Неявки_с_разрешения_администрации1, global::System.Nullable<int> Original_Неявки_по_другим_причинам, global::System.Nullable<int> Original_Неявки_по_другим_причинам1) {
-            if ((ФамилияИО.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ФамилияИО.Value));
+        public virtual int Update(global::System.Nullable<int> Сотрудник, global::System.Nullable<int> Неявки_по_закону, global::System.Nullable<int> Неявки_с_разрешения_администрации, global::System.Nullable<int> Неявки_по_другим_причинам, int Original_Код_н, global::System.Nullable<int> Original_Сотрудник, global::System.Nullable<int> Original_Неявки_по_закону, global::System.Nullable<int> Original_Неявки_с_разрешения_администрации, global::System.Nullable<int> Original_Неявки_по_другим_причинам) {
+            if ((Сотрудник.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Сотрудник.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
@@ -3489,52 +4089,36 @@ WHERE        ([Код_н] = ?) AND (? = 1 AND ФамилияИО IS NULL OR
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Код_н));
-            if ((Original_ФамилияИО.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ФамилияИО.Value));
+            if ((Original_Сотрудник.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Сотрудник.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            if ((Original_ФамилияИО1.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_ФамилияИО1.Value));
-            }
-            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             if ((Original_Неявки_по_закону.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Неявки_по_закону.Value));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Неявки_по_закону.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Неявки_по_закону1.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_Неявки_по_закону1.Value));
-            }
-            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             if ((Original_Неявки_с_разрешения_администрации.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Неявки_с_разрешения_администрации.Value));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Неявки_с_разрешения_администрации.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Неявки_с_разрешения_администрации1.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_Неявки_с_разрешения_администрации1.Value));
-            }
-            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             if ((Original_Неявки_по_другим_причинам.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Неявки_по_другим_причинам.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_Неявки_по_другим_причинам.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Неявки_по_другим_причинам1.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_Неявки_по_другим_причинам1.Value));
-            }
-            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
@@ -4788,6 +5372,260 @@ WHERE        (? = 1 AND ФондРабочегоВремени IS NULL OR
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class sotrneiyavTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.OleDb.OleDbDataAdapter _adapter;
+        
+        private global::System.Data.OleDb.OleDbConnection _connection;
+        
+        private global::System.Data.OleDb.OleDbTransaction _transaction;
+        
+        private global::System.Data.OleDb.OleDbCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public sotrneiyavTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected internal global::System.Data.OleDb.OleDbDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.OleDb.OleDbConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.OleDb.OleDbCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        internal global::System.Data.OleDb.OleDbTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        protected global::System.Data.OleDb.OleDbCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.OleDb.OleDbDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "sotrneiyav";
+            tableMapping.ColumnMappings.Add("Код_н", "Код_н");
+            tableMapping.ColumnMappings.Add("Сотрудник", "Сотрудник");
+            tableMapping.ColumnMappings.Add("ФамилияИО", "ФамилияИО");
+            tableMapping.ColumnMappings.Add("Неявки по закону", "Неявки по закону");
+            tableMapping.ColumnMappings.Add("Неявки с разрешения администрации", "Неявки с разрешения администрации");
+            tableMapping.ColumnMappings.Add("Неявки по другим причинам", "Неявки по другим причинам");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM Неявки
+WHERE        (? = 1 AND [Неявки по другим причинам] IS NULL OR
+                         [Неявки по другим причинам] = ?) AND (? = 1 AND [Неявки по закону] IS NULL OR
+                         [Неявки по закону] = ?) AND (? = 1 AND [Неявки с разрешения администрации] IS NULL OR
+                         [Неявки с разрешения администрации] = ?) AND (? = 1 AND Сотрудник IS NULL OR
+                         Сотрудник = ?) AND ([Код_н] = ?)";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_другим_причинам", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_другим_причинам1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_закону", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по закону", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_закону1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по закону", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_с_разрешения_администрации", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки с разрешения администрации", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_с_разрешения_администрации1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки с разрешения администрации", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Сотрудник", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Сотрудник1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Код_н", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Код_н", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO Неявки\r\n                         (Сотрудник, [Неявки по закону], [Нея" +
+                "вки с разрешения администрации], [Неявки по другим причинам])\r\nVALUES        (?," +
+                " ?, ?, ?)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Сотрудник", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_закону", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по закону", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_с_разрешения_администрации", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки с разрешения администрации", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_другим_причинам", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand = new global::System.Data.OleDb.OleDbCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE       Неявки
+SET                Сотрудник = ?, [Неявки по закону] = ?, [Неявки с разрешения администрации] = ?, [Неявки по другим причинам] = ?
+WHERE        (? = 1 AND [Неявки по другим причинам] IS NULL OR
+                         [Неявки по другим причинам] = ?) AND (? = 1 AND [Неявки с разрешения администрации] IS NULL OR
+                         [Неявки с разрешения администарции] = ?) AND (? = 1 AND [Неявки по закону] IS NULL OR
+                         ? = '[Неявки по закону] = ?') AND (? = 1 AND Сотрудник IS NULL OR
+                         Сотрудник = ?) AND ([Код_н] = ?)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Сотрудник", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_закону", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по закону", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_с_разрешения_администрации", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки с разрешения администрации", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Неявки_по_другим_причинам", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Неявки_по_другим_причинам", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Неявки_по_другим_причинам1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Неявки по другим причинам", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Param7", global::System.Data.OleDb.OleDbType.Variant, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Param8", global::System.Data.OleDb.OleDbType.Variant, 1024, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Сотрудник", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Сотрудник1", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Сотрудник2", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Сотрудник3", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Сотрудник", global::System.Data.DataRowVersion.Original, false, null));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("Original_Код_н", global::System.Data.OleDb.OleDbType.Integer, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "Код_н", global::System.Data.DataRowVersion.Original, false, null));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.OleDb.OleDbConnection();
+            this._connection.ConnectionString = global::ID.Properties.Settings.Default.IDConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
+            this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        Неявки.[Код_н], Неявки.Сотрудник, Сотрудники.ФамилияИО, Неявки.[Неявки по закону], Неявки.[Неявки с разрешения администрации], Неявки.[Неявки по другим причинам]
+FROM            (Неявки INNER JOIN
+                         Сотрудники ON Неявки.Сотрудник = Сотрудники.[Код_С])";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(IDDataSet.sotrneiyavDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual IDDataSet.sotrneiyavDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            IDDataSet.sotrneiyavDataTable dataTable = new IDDataSet.sotrneiyavDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(IDDataSet.sotrneiyavDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(IDDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "sotrneiyav");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -4806,6 +5644,8 @@ WHERE        (? = 1 AND ФондРабочегоВремени IS NULL OR
         private ФондTableAdapter _фондTableAdapter;
         
         private sotrfondTableAdapter _sotrfondTableAdapter;
+        
+        private sotrneiyavTableAdapter _sotrneiyavTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -4880,6 +5720,20 @@ WHERE        (? = 1 AND ФондРабочегоВремени IS NULL OR
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public sotrneiyavTableAdapter sotrneiyavTableAdapter {
+            get {
+                return this._sotrneiyavTableAdapter;
+            }
+            set {
+                this._sotrneiyavTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -4913,6 +5767,10 @@ WHERE        (? = 1 AND ФондРабочегоВремени IS NULL OR
                             && (this._sotrfondTableAdapter.Connection != null))) {
                     return this._sotrfondTableAdapter.Connection;
                 }
+                if (((this._sotrneiyavTableAdapter != null) 
+                            && (this._sotrneiyavTableAdapter.Connection != null))) {
+                    return this._sotrneiyavTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -4936,6 +5794,9 @@ WHERE        (? = 1 AND ФондРабочегоВремени IS NULL OR
                     count = (count + 1);
                 }
                 if ((this._sotrfondTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._sotrneiyavTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -4985,6 +5846,15 @@ WHERE        (? = 1 AND ФондРабочегоВремени IS NULL OR
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._sotrneiyavTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.sotrneiyav.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._sotrneiyavTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             return result;
         }
         
@@ -5027,6 +5897,14 @@ WHERE        (? = 1 AND ФондРабочегоВремени IS NULL OR
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._sotrneiyavTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.sotrneiyav.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._sotrneiyavTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             return result;
         }
         
@@ -5037,6 +5915,14 @@ WHERE        (? = 1 AND ФондРабочегоВремени IS NULL OR
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(IDDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
+            if ((this._sotrneiyavTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.sotrneiyav.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._sotrneiyavTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._sotrfondTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.sotrfond.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -5128,6 +6014,11 @@ WHERE        (? = 1 AND ФондРабочегоВремени IS NULL OR
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
+            if (((this._sotrneiyavTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._sotrneiyavTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager не содержит сведений о подключении. Укажите для каждого адапт" +
@@ -5194,6 +6085,15 @@ WHERE        (? = 1 AND ФондРабочегоВремени IS NULL OR
                     if (this._sotrfondTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._sotrfondTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._sotrfondTableAdapter.Adapter);
+                    }
+                }
+                if ((this._sotrneiyavTableAdapter != null)) {
+                    revertConnections.Add(this._sotrneiyavTableAdapter, this._sotrneiyavTableAdapter.Connection);
+                    this._sotrneiyavTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(workConnection));
+                    this._sotrneiyavTableAdapter.Transaction = ((global::System.Data.OleDb.OleDbTransaction)(workTransaction));
+                    if (this._sotrneiyavTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._sotrneiyavTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._sotrneiyavTableAdapter.Adapter);
                     }
                 }
                 // 
@@ -5269,6 +6169,10 @@ WHERE        (? = 1 AND ФондРабочегоВремени IS NULL OR
                 if ((this._sotrfondTableAdapter != null)) {
                     this._sotrfondTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._sotrfondTableAdapter]));
                     this._sotrfondTableAdapter.Transaction = null;
+                }
+                if ((this._sotrneiyavTableAdapter != null)) {
+                    this._sotrneiyavTableAdapter.Connection = ((global::System.Data.OleDb.OleDbConnection)(revertConnections[this._sotrneiyavTableAdapter]));
+                    this._sotrneiyavTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
