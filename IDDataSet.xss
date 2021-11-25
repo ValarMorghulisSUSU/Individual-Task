@@ -11,21 +11,10 @@
     <Shape ID="DesignTable:Фонд" ZOrder="8" X="357" Y="312" Height="134" Width="177" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="83" />
     <Shape ID="DesignTable:Ведомость ф_р_в" ZOrder="7" X="357" Y="516" Height="153" Width="248" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="102" />
     <Shape ID="DesignTable:Сумма неявок" ZOrder="6" X="357" Y="739" Height="115" Width="231" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="64" />
-    <Shape ID="DesignTable:sotrfond" ZOrder="1" X="0" Y="0" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
+    <Shape ID="DesignTable:sotrfond" ZOrder="3" X="0" Y="0" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
+    <Shape ID="DesignTable:sotrneiyav" ZOrder="2" X="0" Y="0" Height="90" Width="158" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="0" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:СотрудникиНеявки" ZOrder="5" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>287</X>
-          <Y>128</Y>
-        </Point>
-        <Point>
-          <X>358</X>
-          <Y>128</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
     <Connector ID="DesignRelation:СотрудникиФонд" ZOrder="4" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -42,35 +31,35 @@
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:Сотрудники_Ведомость ф_р_в" ZOrder="3" LineWidth="11">
+    <Connector ID="DesignRelation:СотрудникиНеявки" ZOrder="5" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>262</X>
-          <Y>185</Y>
+          <X>287</X>
+          <Y>128</Y>
         </Point>
         <Point>
-          <X>262</X>
-          <Y>533</Y>
-        </Point>
-        <Point>
-          <X>357</X>
-          <Y>533</Y>
+          <X>358</X>
+          <Y>128</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:Сотрудники_Сумма неявок" ZOrder="2" LineWidth="11">
+    <Connector ID="DesignRelation:СотрудникиНеявки1" ZOrder="1" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>254</X>
-          <Y>185</Y>
+          <X>118</X>
+          <Y>0</Y>
         </Point>
         <Point>
-          <X>254</X>
-          <Y>756</Y>
+          <X>118</X>
+          <Y>-30</Y>
         </Point>
         <Point>
-          <X>357</X>
-          <Y>756</Y>
+          <X>118</X>
+          <Y>-30</Y>
+        </Point>
+        <Point>
+          <X>118</X>
+          <Y>0</Y>
         </Point>
       </RoutePoints>
     </Connector>

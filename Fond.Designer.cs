@@ -33,6 +33,8 @@ namespace ID
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Fond));
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.sotrfondBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iDDataSet = new ID.IDDataSet();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
@@ -55,22 +57,21 @@ namespace ID
             this.сотрудникDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.фамилияИОDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.сотрудникиBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iDDataSet = new ID.IDDataSet();
             this.фондРабочегоВремениDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sotrfondBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sotrfondTableAdapter = new ID.IDDataSetTableAdapters.sotrfondTableAdapter();
             this.сотрудникиTableAdapter = new ID.IDDataSetTableAdapters.СотрудникиTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sotrfondBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iDDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникиBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iDDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sotrfondBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bindingNavigator1.BackColor = System.Drawing.Color.PaleTurquoise;
             this.bindingNavigator1.BindingSource = this.sotrfondBindingSource;
             this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
@@ -98,7 +99,7 @@ namespace ID
             this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bindingNavigator1.Name = "bindingNavigator1";
             this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(807, 25);
+            this.bindingNavigator1.Size = new System.Drawing.Size(569, 25);
             this.bindingNavigator1.TabIndex = 0;
             this.bindingNavigator1.Text = "bindingNavigator1";
             // 
@@ -110,6 +111,16 @@ namespace ID
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
             this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorAddNewItem.Text = "Добавить";
+            // 
+            // sotrfondBindingSource
+            // 
+            this.sotrfondBindingSource.DataMember = "sotrfond";
+            this.sotrfondBindingSource.DataSource = this.iDDataSet;
+            // 
+            // iDDataSet
+            // 
+            this.iDDataSet.DataSetName = "IDDataSet";
+            this.iDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bindingNavigatorCountItem
             // 
@@ -256,9 +267,10 @@ namespace ID
             this.фамилияИОDataGridViewTextBoxColumn1,
             this.фондРабочегоВремениDataGridViewTextBoxColumn1});
             this.dataGridView1.DataSource = this.sotrfondBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 48);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 28);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(519, 273);
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(545, 359);
             this.dataGridView1.TabIndex = 1;
             // 
             // кодФDataGridViewTextBoxColumn
@@ -291,21 +303,11 @@ namespace ID
             this.сотрудникиBindingSource.DataMember = "Сотрудники";
             this.сотрудникиBindingSource.DataSource = this.iDDataSet;
             // 
-            // iDDataSet
-            // 
-            this.iDDataSet.DataSetName = "IDDataSet";
-            this.iDDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // фондРабочегоВремениDataGridViewTextBoxColumn1
             // 
             this.фондРабочегоВремениDataGridViewTextBoxColumn1.DataPropertyName = "ФондРабочегоВремени";
             this.фондРабочегоВремениDataGridViewTextBoxColumn1.HeaderText = "ФондРабочегоВремени";
             this.фондРабочегоВремениDataGridViewTextBoxColumn1.Name = "фондРабочегоВремениDataGridViewTextBoxColumn1";
-            // 
-            // sotrfondBindingSource
-            // 
-            this.sotrfondBindingSource.DataMember = "sotrfond";
-            this.sotrfondBindingSource.DataSource = this.iDDataSet;
             // 
             // sotrfondTableAdapter
             // 
@@ -319,19 +321,21 @@ namespace ID
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(807, 399);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(569, 399);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.bindingNavigator1);
             this.Name = "Fond";
-            this.Text = "Fond";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Фонд рабочего времени";
             this.Load += new System.EventHandler(this.Fond_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.sotrfondBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iDDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникиBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iDDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sotrfondBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

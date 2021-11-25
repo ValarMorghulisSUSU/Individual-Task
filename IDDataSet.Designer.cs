@@ -40,10 +40,6 @@ namespace ID {
         
         private global::System.Data.DataRelation relationСотрудникиФонд;
         
-        private global::System.Data.DataRelation relationСотрудники_Ведомость_ф_р_в;
-        
-        private global::System.Data.DataRelation relationСотрудники_Сумма_неявок;
-        
         private global::System.Data.DataRelation relationСотрудникиНеявки;
         
         private global::System.Data.DataRelation relationСотрудникиНеявки1;
@@ -349,8 +345,6 @@ namespace ID {
                 }
             }
             this.relationСотрудникиФонд = this.Relations["СотрудникиФонд"];
-            this.relationСотрудники_Ведомость_ф_р_в = this.Relations["Сотрудники_Ведомость ф_р_в"];
-            this.relationСотрудники_Сумма_неявок = this.Relations["Сотрудники_Сумма неявок"];
             this.relationСотрудникиНеявки = this.Relations["СотрудникиНеявки"];
             this.relationСотрудникиНеявки1 = this.Relations["СотрудникиНеявки1"];
         }
@@ -381,14 +375,6 @@ namespace ID {
                         this.tableСотрудники.Код_СColumn}, new global::System.Data.DataColumn[] {
                         this.tableФонд.СотрудникColumn}, false);
             this.Relations.Add(this.relationСотрудникиФонд);
-            this.relationСотрудники_Ведомость_ф_р_в = new global::System.Data.DataRelation("Сотрудники_Ведомость ф_р_в", new global::System.Data.DataColumn[] {
-                        this.tableСотрудники.Код_СColumn}, new global::System.Data.DataColumn[] {
-                        this.tableВедомость_ф_р_в.ФамилияИОColumn}, false);
-            this.Relations.Add(this.relationСотрудники_Ведомость_ф_р_в);
-            this.relationСотрудники_Сумма_неявок = new global::System.Data.DataRelation("Сотрудники_Сумма неявок", new global::System.Data.DataColumn[] {
-                        this.tableСотрудники.Код_СColumn}, new global::System.Data.DataColumn[] {
-                        this.tableСумма_неявок.ФамилияИОColumn}, false);
-            this.Relations.Add(this.relationСотрудники_Сумма_неявок);
             this.relationСотрудникиНеявки = new global::System.Data.DataRelation("СотрудникиНеявки", new global::System.Data.DataColumn[] {
                         this.tableСотрудники.Код_СColumn}, new global::System.Data.DataColumn[] {
                         this.tableНеявки.СотрудникColumn}, false);
@@ -1412,13 +1398,13 @@ namespace ID {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class Ведомость_ф_р_вDataTable : global::System.Data.TypedTableBase<Ведомость_ф_р_вRow> {
             
-            private global::System.Data.DataColumn columnФамилияИО;
-            
             private global::System.Data.DataColumn columnОтработано;
             
             private global::System.Data.DataColumn columnВсего_неявок;
             
             private global::System.Data.DataColumn columnЯвочный_коэффициент;
+            
+            private global::System.Data.DataColumn columnФамилияИО;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1455,14 +1441,6 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ФамилияИОColumn {
-                get {
-                    return this.columnФамилияИО;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ОтработаноColumn {
                 get {
                     return this.columnОтработано;
@@ -1482,6 +1460,14 @@ namespace ID {
             public global::System.Data.DataColumn Явочный_коэффициентColumn {
                 get {
                     return this.columnЯвочный_коэффициент;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ФамилияИОColumn {
+                get {
+                    return this.columnФамилияИО;
                 }
             }
             
@@ -1522,16 +1508,13 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Ведомость_ф_р_вRow AddВедомость_ф_р_вRow(СотрудникиRow parentСотрудникиRowByСотрудники_Ведомость_ф_р_в, int Отработано, int Всего_неявок, double Явочный_коэффициент) {
+            public Ведомость_ф_р_вRow AddВедомость_ф_р_вRow(int Отработано, int Всего_неявок, double Явочный_коэффициент, string ФамилияИО) {
                 Ведомость_ф_р_вRow rowВедомость_ф_р_вRow = ((Ведомость_ф_р_вRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
                         Отработано,
                         Всего_неявок,
-                        Явочный_коэффициент};
-                if ((parentСотрудникиRowByСотрудники_Ведомость_ф_р_в != null)) {
-                    columnValuesArray[0] = parentСотрудникиRowByСотрудники_Ведомость_ф_р_в[0];
-                }
+                        Явочный_коэффициент,
+                        ФамилияИО};
                 rowВедомость_ф_р_вRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowВедомость_ф_р_вRow);
                 return rowВедомость_ф_р_вRow;
@@ -1554,26 +1537,27 @@ namespace ID {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnФамилияИО = base.Columns["ФамилияИО"];
                 this.columnОтработано = base.Columns["Отработано"];
                 this.columnВсего_неявок = base.Columns["Всего неявок"];
                 this.columnЯвочный_коэффициент = base.Columns["Явочный коэффициент"];
+                this.columnФамилияИО = base.Columns["ФамилияИО"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnФамилияИО = new global::System.Data.DataColumn("ФамилияИО", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnФамилияИО);
                 this.columnОтработано = new global::System.Data.DataColumn("Отработано", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnОтработано);
                 this.columnВсего_неявок = new global::System.Data.DataColumn("Всего неявок", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnВсего_неявок);
                 this.columnЯвочный_коэффициент = new global::System.Data.DataColumn("Явочный коэффициент", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnЯвочный_коэффициент);
+                this.columnФамилияИО = new global::System.Data.DataColumn("ФамилияИО", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnФамилияИО);
                 this.columnОтработано.ReadOnly = true;
                 this.columnВсего_неявок.ReadOnly = true;
                 this.columnЯвочный_коэффициент.ReadOnly = true;
+                this.columnФамилияИО.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1707,9 +1691,9 @@ namespace ID {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class Сумма_неявокDataTable : global::System.Data.TypedTableBase<Сумма_неявокRow> {
             
-            private global::System.Data.DataColumn columnФамилияИО;
-            
             private global::System.Data.DataColumn columnВсего_неявок;
+            
+            private global::System.Data.DataColumn columnФамилияИО;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1746,17 +1730,17 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ФамилияИОColumn {
+            public global::System.Data.DataColumn Всего_неявокColumn {
                 get {
-                    return this.columnФамилияИО;
+                    return this.columnВсего_неявок;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn Всего_неявокColumn {
+            public global::System.Data.DataColumn ФамилияИОColumn {
                 get {
-                    return this.columnВсего_неявок;
+                    return this.columnФамилияИО;
                 }
             }
             
@@ -1797,14 +1781,11 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Сумма_неявокRow AddСумма_неявокRow(СотрудникиRow parentСотрудникиRowByСотрудники_Сумма_неявок, int Всего_неявок) {
+            public Сумма_неявокRow AddСумма_неявокRow(int Всего_неявок, string ФамилияИО) {
                 Сумма_неявокRow rowСумма_неявокRow = ((Сумма_неявокRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
-                        Всего_неявок};
-                if ((parentСотрудникиRowByСотрудники_Сумма_неявок != null)) {
-                    columnValuesArray[0] = parentСотрудникиRowByСотрудники_Сумма_неявок[0];
-                }
+                        Всего_неявок,
+                        ФамилияИО};
                 rowСумма_неявокRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowСумма_неявокRow);
                 return rowСумма_неявокRow;
@@ -1827,18 +1808,19 @@ namespace ID {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
-                this.columnФамилияИО = base.Columns["ФамилияИО"];
                 this.columnВсего_неявок = base.Columns["Всего неявок"];
+                this.columnФамилияИО = base.Columns["ФамилияИО"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
-                this.columnФамилияИО = new global::System.Data.DataColumn("ФамилияИО", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnФамилияИО);
                 this.columnВсего_неявок = new global::System.Data.DataColumn("Всего неявок", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnВсего_неявок);
+                this.columnФамилияИО = new global::System.Data.DataColumn("ФамилияИО", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnФамилияИО);
                 this.columnВсего_неявок.ReadOnly = true;
+                this.columnФамилияИО.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2799,28 +2781,6 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Ведомость_ф_р_вRow[] GetВедомость_ф_р_вRows() {
-                if ((this.Table.ChildRelations["Сотрудники_Ведомость ф_р_в"] == null)) {
-                    return new Ведомость_ф_р_вRow[0];
-                }
-                else {
-                    return ((Ведомость_ф_р_вRow[])(base.GetChildRows(this.Table.ChildRelations["Сотрудники_Ведомость ф_р_в"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public Сумма_неявокRow[] GetСумма_неявокRows() {
-                if ((this.Table.ChildRelations["Сотрудники_Сумма неявок"] == null)) {
-                    return new Сумма_неявокRow[0];
-                }
-                else {
-                    return ((Сумма_неявокRow[])(base.GetChildRows(this.Table.ChildRelations["Сотрудники_Сумма неявок"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public НеявкиRow[] GetНеявкиRows() {
                 if ((this.Table.ChildRelations["СотрудникиНеявки"] == null)) {
                     return new НеявкиRow[0];
@@ -2951,22 +2911,6 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int ФамилияИО {
-                get {
-                    try {
-                        return ((int)(this[this.tableВедомость_ф_р_в.ФамилияИОColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ФамилияИО\' в таблице \'Ведомость ф_р_в\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableВедомость_ф_р_в.ФамилияИОColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Отработано {
                 get {
                     try {
@@ -3016,25 +2960,18 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public СотрудникиRow СотрудникиRow {
+            public string ФамилияИО {
                 get {
-                    return ((СотрудникиRow)(this.GetParentRow(this.Table.ParentRelations["Сотрудники_Ведомость ф_р_в"])));
+                    try {
+                        return ((string)(this[this.tableВедомость_ф_р_в.ФамилияИОColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ФамилияИО\' в таблице \'Ведомость ф_р_в\' равно DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Сотрудники_Ведомость ф_р_в"]);
+                    this[this.tableВедомость_ф_р_в.ФамилияИОColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsФамилияИОNull() {
-                return this.IsNull(this.tableВедомость_ф_р_в.ФамилияИОColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetФамилияИОNull() {
-                this[this.tableВедомость_ф_р_в.ФамилияИОColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3072,6 +3009,18 @@ namespace ID {
             public void SetЯвочный_коэффициентNull() {
                 this[this.tableВедомость_ф_р_в.Явочный_коэффициентColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsФамилияИОNull() {
+                return this.IsNull(this.tableВедомость_ф_р_в.ФамилияИОColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetФамилияИОNull() {
+                this[this.tableВедомость_ф_р_в.ФамилияИОColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -3086,22 +3035,6 @@ namespace ID {
             internal Сумма_неявокRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableСумма_неявок = ((Сумма_неявокDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int ФамилияИО {
-                get {
-                    try {
-                        return ((int)(this[this.tableСумма_неявок.ФамилияИОColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ФамилияИО\' в таблице \'Сумма неявок\' равно DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableСумма_неявок.ФамилияИОColumn] = value;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3122,25 +3055,18 @@ namespace ID {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public СотрудникиRow СотрудникиRow {
+            public string ФамилияИО {
                 get {
-                    return ((СотрудникиRow)(this.GetParentRow(this.Table.ParentRelations["Сотрудники_Сумма неявок"])));
+                    try {
+                        return ((string)(this[this.tableСумма_неявок.ФамилияИОColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'ФамилияИО\' в таблице \'Сумма неявок\' равно DBNull.", e);
+                    }
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Сотрудники_Сумма неявок"]);
+                    this[this.tableСумма_неявок.ФамилияИОColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsФамилияИОNull() {
-                return this.IsNull(this.tableСумма_неявок.ФамилияИОColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetФамилияИОNull() {
-                this[this.tableСумма_неявок.ФамилияИОColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3153,6 +3079,18 @@ namespace ID {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetВсего_неявокNull() {
                 this[this.tableСумма_неявок.Всего_неявокColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsФамилияИОNull() {
+                return this.IsNull(this.tableСумма_неявок.ФамилияИОColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetФамилияИОNull() {
+                this[this.tableСумма_неявок.ФамилияИОColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4920,10 +4858,10 @@ namespace ID.IDDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Ведомость ф_р_в";
-            tableMapping.ColumnMappings.Add("ФамилияИО", "ФамилияИО");
             tableMapping.ColumnMappings.Add("Отработано", "Отработано");
             tableMapping.ColumnMappings.Add("Всего неявок", "Всего неявок");
             tableMapping.ColumnMappings.Add("Явочный коэффициент", "Явочный коэффициент");
+            tableMapping.ColumnMappings.Add("ФамилияИО", "ФамилияИО");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4940,8 +4878,9 @@ namespace ID.IDDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ФамилияИО, Отработано, [Всего неявок], [Явочный коэффициент] FROM [Ведомос" +
-                "ть ф_р_в]";
+            this._commandCollection[0].CommandText = @"SELECT        Сотрудники.ФамилияИО, [Ведомость ф_р_в].Отработано, [Ведомость ф_р_в].[Всего неявок], [Ведомость ф_р_в].[Явочный коэффициент]
+FROM            ([Ведомость ф_р_в] INNER JOIN
+                         Сотрудники ON [Ведомость ф_р_в].Сотрудник = Сотрудники.[Код_С])";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5091,8 +5030,8 @@ namespace ID.IDDataSetTableAdapters {
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Сумма неявок";
-            tableMapping.ColumnMappings.Add("ФамилияИО", "ФамилияИО");
             tableMapping.ColumnMappings.Add("Всего неявок", "Всего неявок");
+            tableMapping.ColumnMappings.Add("ФамилияИО", "ФамилияИО");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -5109,7 +5048,9 @@ namespace ID.IDDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ФамилияИО, [Всего неявок] FROM [Сумма неявок]";
+            this._commandCollection[0].CommandText = "SELECT        Сотрудники.ФамилияИО, [Сумма неявок].[Всего неявок]\r\nFROM          " +
+                "  ([Сумма неявок] INNER JOIN\r\n                         Сотрудники ON [Сумма неяв" +
+                "ок].Сотрудник = Сотрудники.[Код_С])";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

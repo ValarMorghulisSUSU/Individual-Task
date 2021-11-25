@@ -34,5 +34,17 @@ namespace ID
             Neiyavki frm = new Neiyavki();
             frm.ShowDialog();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Ved_N frm = new Ved_N();
+            frm.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Ved_F frm = new Ved_F();
+            frm.ShowDialog();
+        }
     }
 }

@@ -80,6 +80,18 @@
     <Compile Include="Sotrudniki.Designer.cs">
       <DependentUpon>Sotrudniki.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ved_F.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ved_F.Designer.cs">
+      <DependentUpon>Ved_F.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ved_N.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ved_N.Designer.cs">
+      <DependentUpon>Ved_N.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Fond.resx">
       <DependentUpon>Fond.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +113,12 @@
     </Compile>
     <EmbeddedResource Include="Sotrudniki.resx">
       <DependentUpon>Sotrudniki.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ved_F.resx">
+      <DependentUpon>Ved_F.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ved_N.resx">
+      <DependentUpon>Ved_N.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="IDDataSet.xsc">
       <DependentUpon>IDDataSet.xsd</DependentUpon>
