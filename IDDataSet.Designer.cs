@@ -4878,9 +4878,10 @@ namespace ID.IDDataSetTableAdapters {
             this._commandCollection = new global::System.Data.OleDb.OleDbCommand[1];
             this._commandCollection[0] = new global::System.Data.OleDb.OleDbCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Сотрудники.ФамилияИО, [Ведомость ф_р_в].Отработано, [Ведомость ф_р_в].[Всего неявок], [Ведомость ф_р_в].[Явочный коэффициент]
-FROM            ([Ведомость ф_р_в] INNER JOIN
-                         Сотрудники ON [Ведомость ф_р_в].Сотрудник = Сотрудники.[Код_С])";
+            this._commandCollection[0].CommandText = @"SELECT        Сотрудники.ФамилияИО, [Ведомость ф_р_в].Отработано, [Ведомость ф_р_в].[Явочный коэффициент], [Сумма неявок].[Всего неявок]
+FROM            (([Ведомость ф_р_в] INNER JOIN
+                         Сотрудники ON [Ведомость ф_р_в].Сотрудник = Сотрудники.[Код_С]) INNER JOIN
+                         [Сумма неявок] ON [Ведомость ф_р_в].Сотрудник = [Сумма неявок].Сотрудник)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

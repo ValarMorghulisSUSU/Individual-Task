@@ -178,9 +178,10 @@
               <DbSource ConnectionRef="IDConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Сотрудники.ФамилияИО, [Ведомость ф_р_в].Отработано, [Ведомость ф_р_в].[Всего неявок], [Ведомость ф_р_в].[Явочный коэффициент]
-FROM            ([Ведомость ф_р_в] INNER JOIN
-                         Сотрудники ON [Ведомость ф_р_в].Сотрудник = Сотрудники.[Код_С])</CommandText>
+                    <CommandText>SELECT        Сотрудники.ФамилияИО, [Ведомость ф_р_в].Отработано, [Ведомость ф_р_в].[Явочный коэффициент], [Сумма неявок].[Всего неявок]
+FROM            (([Ведомость ф_р_в] INNER JOIN
+                         Сотрудники ON [Ведомость ф_р_в].Сотрудник = Сотрудники.[Код_С]) INNER JOIN
+                         [Сумма неявок] ON [Ведомость ф_р_в].Сотрудник = [Сумма неявок].Сотрудник)</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -368,7 +369,7 @@ WHERE        (? = 1 AND [Неявки по другим причинам] IS NUL
   <xs:element name="IDDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="IDDataSet" msprop:Generator_UserDSName="IDDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Неявки" msprop:Generator_TableClassName="НеявкиDataTable" msprop:Generator_TableVarName="tableНеявки" msprop:Generator_TablePropName="Неявки" msprop:Generator_RowDeletingName="НеявкиRowDeleting" msprop:Generator_RowChangingName="НеявкиRowChanging" msprop:Generator_RowEvHandlerName="НеявкиRowChangeEventHandler" msprop:Generator_RowDeletedName="НеявкиRowDeleted" msprop:Generator_UserTableName="Неявки" msprop:Generator_RowChangedName="НеявкиRowChanged" msprop:Generator_RowEvArgName="НеявкиRowChangeEvent" msprop:Generator_RowClassName="НеявкиRow">
+        <xs:element name="Неявки" msprop:Generator_TableClassName="НеявкиDataTable" msprop:Generator_TableVarName="tableНеявки" msprop:Generator_RowChangedName="НеявкиRowChanged" msprop:Generator_TablePropName="Неявки" msprop:Generator_RowDeletingName="НеявкиRowDeleting" msprop:Generator_RowChangingName="НеявкиRowChanging" msprop:Generator_RowEvHandlerName="НеявкиRowChangeEventHandler" msprop:Generator_RowDeletedName="НеявкиRowDeleted" msprop:Generator_RowClassName="НеявкиRow" msprop:Generator_UserTableName="Неявки" msprop:Generator_RowEvArgName="НеявкиRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Код_н" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_н" msprop:Generator_ColumnPropNameInRow="Код_н" msprop:Generator_ColumnPropNameInTable="Код_нColumn" msprop:Generator_UserColumnName="Код_н" type="xs:int" />
@@ -379,7 +380,7 @@ WHERE        (? = 1 AND [Неявки по другим причинам] IS NUL
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Сотрудники" msprop:Generator_TableClassName="СотрудникиDataTable" msprop:Generator_TableVarName="tableСотрудники" msprop:Generator_TablePropName="Сотрудники" msprop:Generator_RowDeletingName="СотрудникиRowDeleting" msprop:Generator_RowChangingName="СотрудникиRowChanging" msprop:Generator_RowEvHandlerName="СотрудникиRowChangeEventHandler" msprop:Generator_RowDeletedName="СотрудникиRowDeleted" msprop:Generator_UserTableName="Сотрудники" msprop:Generator_RowChangedName="СотрудникиRowChanged" msprop:Generator_RowEvArgName="СотрудникиRowChangeEvent" msprop:Generator_RowClassName="СотрудникиRow">
+        <xs:element name="Сотрудники" msprop:Generator_TableClassName="СотрудникиDataTable" msprop:Generator_TableVarName="tableСотрудники" msprop:Generator_RowChangedName="СотрудникиRowChanged" msprop:Generator_TablePropName="Сотрудники" msprop:Generator_RowDeletingName="СотрудникиRowDeleting" msprop:Generator_RowChangingName="СотрудникиRowChanging" msprop:Generator_RowEvHandlerName="СотрудникиRowChangeEventHandler" msprop:Generator_RowDeletedName="СотрудникиRowDeleted" msprop:Generator_RowClassName="СотрудникиRow" msprop:Generator_UserTableName="Сотрудники" msprop:Generator_RowEvArgName="СотрудникиRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Код_С" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_С" msprop:Generator_ColumnPropNameInRow="Код_С" msprop:Generator_ColumnPropNameInTable="Код_СColumn" msprop:Generator_UserColumnName="Код_С" type="xs:int" />
@@ -393,7 +394,7 @@ WHERE        (? = 1 AND [Неявки по другим причинам] IS NUL
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Фонд" msprop:Generator_TableClassName="ФондDataTable" msprop:Generator_TableVarName="tableФонд" msprop:Generator_TablePropName="Фонд" msprop:Generator_RowDeletingName="ФондRowDeleting" msprop:Generator_RowChangingName="ФондRowChanging" msprop:Generator_RowEvHandlerName="ФондRowChangeEventHandler" msprop:Generator_RowDeletedName="ФондRowDeleted" msprop:Generator_UserTableName="Фонд" msprop:Generator_RowChangedName="ФондRowChanged" msprop:Generator_RowEvArgName="ФондRowChangeEvent" msprop:Generator_RowClassName="ФондRow">
+        <xs:element name="Фонд" msprop:Generator_TableClassName="ФондDataTable" msprop:Generator_TableVarName="tableФонд" msprop:Generator_RowChangedName="ФондRowChanged" msprop:Generator_TablePropName="Фонд" msprop:Generator_RowDeletingName="ФондRowDeleting" msprop:Generator_RowChangingName="ФондRowChanging" msprop:Generator_RowEvHandlerName="ФондRowChangeEventHandler" msprop:Generator_RowDeletedName="ФондRowDeleted" msprop:Generator_RowClassName="ФондRow" msprop:Generator_UserTableName="Фонд" msprop:Generator_RowEvArgName="ФондRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Код_Ф" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_Ф" msprop:Generator_ColumnPropNameInRow="Код_Ф" msprop:Generator_ColumnPropNameInTable="Код_ФColumn" msprop:Generator_UserColumnName="Код_Ф" type="xs:int" />
@@ -402,7 +403,7 @@ WHERE        (? = 1 AND [Неявки по другим причинам] IS NUL
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Ведомость_x0020_ф_р_в" msprop:Generator_TableClassName="Ведомость_ф_р_вDataTable" msprop:Generator_TableVarName="tableВедомость_ф_р_в" msprop:Generator_TablePropName="Ведомость_ф_р_в" msprop:Generator_RowDeletingName="Ведомость_ф_р_вRowDeleting" msprop:Generator_RowChangingName="Ведомость_ф_р_вRowChanging" msprop:Generator_RowEvHandlerName="Ведомость_ф_р_вRowChangeEventHandler" msprop:Generator_RowDeletedName="Ведомость_ф_р_вRowDeleted" msprop:Generator_UserTableName="Ведомость ф_р_в" msprop:Generator_RowChangedName="Ведомость_ф_р_вRowChanged" msprop:Generator_RowEvArgName="Ведомость_ф_р_вRowChangeEvent" msprop:Generator_RowClassName="Ведомость_ф_р_вRow">
+        <xs:element name="Ведомость_x0020_ф_р_в" msprop:Generator_TableClassName="Ведомость_ф_р_вDataTable" msprop:Generator_TableVarName="tableВедомость_ф_р_в" msprop:Generator_RowChangedName="Ведомость_ф_р_вRowChanged" msprop:Generator_TablePropName="Ведомость_ф_р_в" msprop:Generator_RowDeletingName="Ведомость_ф_р_вRowDeleting" msprop:Generator_RowChangingName="Ведомость_ф_р_вRowChanging" msprop:Generator_RowEvHandlerName="Ведомость_ф_р_вRowChangeEventHandler" msprop:Generator_RowDeletedName="Ведомость_ф_р_вRowDeleted" msprop:Generator_RowClassName="Ведомость_ф_р_вRow" msprop:Generator_UserTableName="Ведомость ф_р_в" msprop:Generator_RowEvArgName="Ведомость_ф_р_вRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Отработано" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnОтработано" msprop:Generator_ColumnPropNameInRow="Отработано" msprop:Generator_ColumnPropNameInTable="ОтработаноColumn" msprop:Generator_UserColumnName="Отработано" type="xs:int" minOccurs="0" />
@@ -418,7 +419,7 @@ WHERE        (? = 1 AND [Неявки по другим причинам] IS NUL
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Сумма_x0020_неявок" msprop:Generator_TableClassName="Сумма_неявокDataTable" msprop:Generator_TableVarName="tableСумма_неявок" msprop:Generator_TablePropName="Сумма_неявок" msprop:Generator_RowDeletingName="Сумма_неявокRowDeleting" msprop:Generator_RowChangingName="Сумма_неявокRowChanging" msprop:Generator_RowEvHandlerName="Сумма_неявокRowChangeEventHandler" msprop:Generator_RowDeletedName="Сумма_неявокRowDeleted" msprop:Generator_UserTableName="Сумма неявок" msprop:Generator_RowChangedName="Сумма_неявокRowChanged" msprop:Generator_RowEvArgName="Сумма_неявокRowChangeEvent" msprop:Generator_RowClassName="Сумма_неявокRow">
+        <xs:element name="Сумма_x0020_неявок" msprop:Generator_TableClassName="Сумма_неявокDataTable" msprop:Generator_TableVarName="tableСумма_неявок" msprop:Generator_RowChangedName="Сумма_неявокRowChanged" msprop:Generator_TablePropName="Сумма_неявок" msprop:Generator_RowDeletingName="Сумма_неявокRowDeleting" msprop:Generator_RowChangingName="Сумма_неявокRowChanging" msprop:Generator_RowEvHandlerName="Сумма_неявокRowChangeEventHandler" msprop:Generator_RowDeletedName="Сумма_неявокRowDeleted" msprop:Generator_RowClassName="Сумма_неявокRow" msprop:Generator_UserTableName="Сумма неявок" msprop:Generator_RowEvArgName="Сумма_неявокRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Всего_x0020_неявок" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnВсего_неявок" msprop:Generator_ColumnPropNameInRow="Всего_неявок" msprop:Generator_ColumnPropNameInTable="Всего_неявокColumn" msprop:Generator_UserColumnName="Всего неявок" type="xs:int" minOccurs="0" />
@@ -432,7 +433,7 @@ WHERE        (? = 1 AND [Неявки по другим причинам] IS NUL
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sotrfond" msprop:Generator_TableClassName="sotrfondDataTable" msprop:Generator_TableVarName="tablesotrfond" msprop:Generator_RowChangedName="sotrfondRowChanged" msprop:Generator_TablePropName="sotrfond" msprop:Generator_RowDeletingName="sotrfondRowDeleting" msprop:Generator_RowChangingName="sotrfondRowChanging" msprop:Generator_RowEvHandlerName="sotrfondRowChangeEventHandler" msprop:Generator_RowDeletedName="sotrfondRowDeleted" msprop:Generator_RowClassName="sotrfondRow" msprop:Generator_UserTableName="sotrfond" msprop:Generator_RowEvArgName="sotrfondRowChangeEvent">
+        <xs:element name="sotrfond" msprop:Generator_TableClassName="sotrfondDataTable" msprop:Generator_TableVarName="tablesotrfond" msprop:Generator_TablePropName="sotrfond" msprop:Generator_RowDeletingName="sotrfondRowDeleting" msprop:Generator_RowChangingName="sotrfondRowChanging" msprop:Generator_RowEvHandlerName="sotrfondRowChangeEventHandler" msprop:Generator_RowDeletedName="sotrfondRowDeleted" msprop:Generator_UserTableName="sotrfond" msprop:Generator_RowChangedName="sotrfondRowChanged" msprop:Generator_RowEvArgName="sotrfondRowChangeEvent" msprop:Generator_RowClassName="sotrfondRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Код_Ф" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_Ф" msprop:Generator_ColumnPropNameInRow="Код_Ф" msprop:Generator_ColumnPropNameInTable="Код_ФColumn" msprop:Generator_UserColumnName="Код_Ф" type="xs:int" minOccurs="0" />
@@ -448,7 +449,7 @@ WHERE        (? = 1 AND [Неявки по другим причинам] IS NUL
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sotrneiyav" msprop:Generator_TableClassName="sotrneiyavDataTable" msprop:Generator_TableVarName="tablesotrneiyav" msprop:Generator_RowChangedName="sotrneiyavRowChanged" msprop:Generator_TablePropName="sotrneiyav" msprop:Generator_RowDeletingName="sotrneiyavRowDeleting" msprop:Generator_RowChangingName="sotrneiyavRowChanging" msprop:Generator_RowEvHandlerName="sotrneiyavRowChangeEventHandler" msprop:Generator_RowDeletedName="sotrneiyavRowDeleted" msprop:Generator_RowClassName="sotrneiyavRow" msprop:Generator_UserTableName="sotrneiyav" msprop:Generator_RowEvArgName="sotrneiyavRowChangeEvent">
+        <xs:element name="sotrneiyav" msprop:Generator_TableClassName="sotrneiyavDataTable" msprop:Generator_TableVarName="tablesotrneiyav" msprop:Generator_TablePropName="sotrneiyav" msprop:Generator_RowDeletingName="sotrneiyavRowDeleting" msprop:Generator_RowChangingName="sotrneiyavRowChanging" msprop:Generator_RowEvHandlerName="sotrneiyavRowChangeEventHandler" msprop:Generator_RowDeletedName="sotrneiyavRowDeleted" msprop:Generator_UserTableName="sotrneiyav" msprop:Generator_RowChangedName="sotrneiyavRowChanged" msprop:Generator_RowEvArgName="sotrneiyavRowChangeEvent" msprop:Generator_RowClassName="sotrneiyavRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Код_н" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnКод_н" msprop:Generator_ColumnPropNameInRow="Код_н" msprop:Generator_ColumnPropNameInTable="Код_нColumn" msprop:Generator_UserColumnName="Код_н" type="xs:int" minOccurs="0" />
@@ -483,9 +484,9 @@ WHERE        (? = 1 AND [Неявки по другим причинам] IS NUL
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="СотрудникиФонд" msdata:parent="Сотрудники" msdata:child="Фонд" msdata:parentkey="Код_С" msdata:childkey="Сотрудник" msprop:Generator_UserChildTable="Фонд" msprop:Generator_ChildPropName="GetФондRows" msprop:Generator_UserRelationName="СотрудникиФонд" msprop:Generator_ParentPropName="СотрудникиRow" msprop:Generator_RelationVarName="relationСотрудникиФонд" msprop:Generator_UserParentTable="Сотрудники" />
-      <msdata:Relationship name="СотрудникиНеявки" msdata:parent="Сотрудники" msdata:child="Неявки" msdata:parentkey="Код_С" msdata:childkey="Сотрудник" msprop:Generator_UserChildTable="Неявки" msprop:Generator_ChildPropName="GetНеявкиRows" msprop:Generator_UserRelationName="СотрудникиНеявки" msprop:Generator_ParentPropName="СотрудникиRow" msprop:Generator_RelationVarName="relationСотрудникиНеявки" msprop:Generator_UserParentTable="Сотрудники" />
-      <msdata:Relationship name="СотрудникиНеявки1" msdata:parent="Сотрудники" msdata:child="sotrneiyav" msdata:parentkey="Код_С" msdata:childkey="Сотрудник" msprop:Generator_UserChildTable="sotrneiyav" msprop:Generator_ChildPropName="GetsotrneiyavRows" msprop:Generator_UserRelationName="СотрудникиНеявки1" msprop:Generator_RelationVarName="relationСотрудникиНеявки1" msprop:Generator_UserParentTable="Сотрудники" msprop:Generator_ParentPropName="СотрудникиRow" />
+      <msdata:Relationship name="СотрудникиФонд" msdata:parent="Сотрудники" msdata:child="Фонд" msdata:parentkey="Код_С" msdata:childkey="Сотрудник" msprop:Generator_UserChildTable="Фонд" msprop:Generator_ChildPropName="GetФондRows" msprop:Generator_UserRelationName="СотрудникиФонд" msprop:Generator_RelationVarName="relationСотрудникиФонд" msprop:Generator_UserParentTable="Сотрудники" msprop:Generator_ParentPropName="СотрудникиRow" />
+      <msdata:Relationship name="СотрудникиНеявки" msdata:parent="Сотрудники" msdata:child="Неявки" msdata:parentkey="Код_С" msdata:childkey="Сотрудник" msprop:Generator_UserChildTable="Неявки" msprop:Generator_ChildPropName="GetНеявкиRows" msprop:Generator_UserRelationName="СотрудникиНеявки" msprop:Generator_RelationVarName="relationСотрудникиНеявки" msprop:Generator_UserParentTable="Сотрудники" msprop:Generator_ParentPropName="СотрудникиRow" />
+      <msdata:Relationship name="СотрудникиНеявки1" msdata:parent="Сотрудники" msdata:child="sotrneiyav" msdata:parentkey="Код_С" msdata:childkey="Сотрудник" msprop:Generator_UserChildTable="sotrneiyav" msprop:Generator_ChildPropName="GetsotrneiyavRows" msprop:Generator_UserRelationName="СотрудникиНеявки1" msprop:Generator_ParentPropName="СотрудникиRow" msprop:Generator_RelationVarName="relationСотрудникиНеявки1" msprop:Generator_UserParentTable="Сотрудники" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
