@@ -19,10 +19,30 @@ namespace ID
 
         private void Neiyavki_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "iDDataSet.Неявки". При необходимости она может быть перемещена или удалена.
+            this.неявкиTableAdapter.Fill(this.iDDataSet.Неявки);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "iDDataSet.Сотрудники". При необходимости она может быть перемещена или удалена.
             this.сотрудникиTableAdapter.Fill(this.iDDataSet.Сотрудники);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "iDDataSet.sotrneiyav". При необходимости она может быть перемещена или удалена.
-            this.sotrneiyavTableAdapter.Fill(this.iDDataSet.sotrneiyav);
+
+            string t;
+
+            int i, k;
+            DataRowView r, r1;
+            this.неявкиBindingSource.MoveFirst();
+            i = 0;
+            while (i < this.неявкиBindingSource.Count)
+            {
+                r = (DataRowView)this.неявкиBindingSource.Current;
+                k = (int)r["Сотрудник"];
+                this.сотрудникиBindingSource.Filter = "Код_С=" + Convert.ToString(k);
+                r1 = (DataRowView)this.сотрудникиBindingSource.Current;
+                t = (string)r1["ФамилияИО"];
+                r["ФамилияИО"] = t;
+                i = i + 1;
+                this.неявкиBindingSource.MoveNext();
+            }
+            this.неявкиBindingSource.Filter = "";
+            this.сотрудникиBindingSource.Filter = "";
 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoResizeColumns();
@@ -31,15 +51,15 @@ namespace ID
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            this.sotrneiyavBindingSource.ResetBindings(false);
-            this.sotrneiyavTableAdapter.Update(this.iDDataSet.sotrneiyav);
-            this.sotrneiyavTableAdapter.Fill(this.iDDataSet.sotrneiyav);
+            this.Validate();
+            this.неявкиBindingSource.EndEdit();
+            this.tableAdapterManager1.UpdateAll(this.iDDataSet);
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             if (toolStripComboBox1.Text == "ФамилияИО")
-                    this.sotrneiyavBindingSource.Filter = "[" + toolStripComboBox1.Text + "] like '" + toolStripTextBox1 + "*'";
+                    this.неявкиBindingSource.Filter = "[" + toolStripComboBox1.Text + "] like '" + toolStripTextBox1 + "*'";
             if (toolStripComboBox1.Text.Substring(0,1) == "Н")
             {
                 string str = toolStripTextBox1.Text.Replace(" ", "");
@@ -52,16 +72,16 @@ namespace ID
                 switch (znak)
                 {
                     case "<":
-                        this.sotrneiyavBindingSource.Filter = "[" + toolStripComboBox1.Text + "] < '" + temp + "'";
+                        this.неявкиBindingSource.Filter = "[" + toolStripComboBox1.Text + "] < '" + temp + "'";
                         break;
                     case ">":
-                        this.sotrneiyavBindingSource.Filter = "[" + toolStripComboBox1.Text + "] > '" + temp + "'";
+                        this.неявкиBindingSource.Filter = "[" + toolStripComboBox1.Text + "] > '" + temp + "'";
                         break;
                     case "=":
-                        this.sotrneiyavBindingSource.Filter = "[" + toolStripComboBox1.Text + "] = '" + temp + "'";
+                        this.неявкиBindingSource.Filter = "[" + toolStripComboBox1.Text + "] = '" + temp + "'";
                         break;
                     default:
-                        this.sotrneiyavBindingSource.Filter = "[" + toolStripComboBox1.Text + "] = '" + temp + "'";
+                        this.неявкиBindingSource.Filter = "[" + toolStripComboBox1.Text + "] = '" + temp + "'";
                         break;
                 }
             }
@@ -69,7 +89,7 @@ namespace ID
 
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            this.sotrneiyavBindingSource.Filter = "";
+            this.неявкиBindingSource.Filter = "";
             this.toolStripComboBox1.Text = "";
             this.toolStripTextBox1.Text = "";
         }

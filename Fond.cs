@@ -19,10 +19,39 @@ namespace ID
 
         private void Fond_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "iDDataSet.Фонд". При необходимости она может быть перемещена или удалена.
+            this.фондTableAdapter.Fill(this.iDDataSet.Фонд);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "iDDataSet.Сотрудники". При необходимости она может быть перемещена или удалена.
             this.сотрудникиTableAdapter.Fill(this.iDDataSet.Сотрудники);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "iDDataSet.sotrfond". При необходимости она может быть перемещена или удалена.
-            this.sotrfondTableAdapter.Fill(this.iDDataSet.sotrfond);
+
+
+
+            string t;
+            try
+            {
+                int i, k;
+                DataRowView r, r1;
+                this.фондBindingSource.MoveFirst();
+                i = 0;
+                while (i < this.фондBindingSource.Count)
+                {
+                    r = (DataRowView)this.фондBindingSource.Current;
+                    k = (int)r["Сотрудник"];
+                    this.сотрудникиBindingSource.Filter = "Код_С=" + Convert.ToString(k);
+                    r1 = (DataRowView)this.сотрудникиBindingSource.Current;
+                    t = (string)r1["ФамилияИО"];
+                    r["ФамилияИО"] = t;
+                    i = i + 1;
+                    this.фондBindingSource.MoveNext();
+
+                }
+            }
+            catch
+            {
+
+            }
+            this.фондBindingSource.Filter = "";
+            this.сотрудникиBindingSource.Filter = "";
 
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoResizeColumns();
@@ -32,9 +61,9 @@ namespace ID
         //Refresh
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            this.sotrfondBindingSource.ResetBindings(false);
-            this.sotrfondTableAdapter.Update(this.iDDataSet.sotrfond);
-            this.sotrfondTableAdapter.Fill(this.iDDataSet.sotrfond);
+            this.Validate();
+            this.фондBindingSource.EndEdit();
+            this.tableAdapterManager1.UpdateAll(this.iDDataSet);
 
         }
 
@@ -45,7 +74,7 @@ namespace ID
             {
 
                 case "ФамилияИО": 
-                    this.sotrfondBindingSource.Filter = "[" + toolStripComboBox1.Text + "] like '" + toolStripTextBox1 + "*'";
+                    this.фондBindingSource.Filter = "[" + toolStripComboBox1.Text + "] like '" + toolStripTextBox1 + "*'";
                     break;
                 case "ФондРабочегоВремени":
                     string str = toolStripTextBox1.Text.Replace(" ", "");
@@ -58,16 +87,16 @@ namespace ID
                     switch (znak)
                     {
                         case "<": 
-                            this.sotrfondBindingSource.Filter = "[" + toolStripComboBox1.Text + "] < '" + temp + "'";
+                            this.фондBindingSource.Filter = "[" + toolStripComboBox1.Text + "] < '" + temp + "'";
                             break;
                         case ">":
-                            this.sotrfondBindingSource.Filter = "[" + toolStripComboBox1.Text + "] > '" + temp + "'";
+                            this.фондBindingSource.Filter = "[" + toolStripComboBox1.Text + "] > '" + temp + "'";
                             break;
                         case "=":
-                            this.sotrfondBindingSource.Filter = "[" + toolStripComboBox1.Text + "] = '" + temp + "'";
+                            this.фондBindingSource.Filter = "[" + toolStripComboBox1.Text + "] = '" + temp + "'";
                             break;
                         default:
-                            this.sotrfondBindingSource.Filter = "[" + toolStripComboBox1.Text + "] = '" + temp + "'";
+                            this.фондBindingSource.Filter = "[" + toolStripComboBox1.Text + "] = '" + temp + "'";
                             break;
                     }
                     break;
@@ -80,7 +109,7 @@ namespace ID
         //Cancel
         private void toolStripButton3_Click(object sender, EventArgs e)
         {
-            this.sotrfondBindingSource.Filter = "";
+            this.фондBindingSource.Filter = "";
             this.toolStripComboBox1.Text = "";
             this.toolStripTextBox1.Text = "";
         }

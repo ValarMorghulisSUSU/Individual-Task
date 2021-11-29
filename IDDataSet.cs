@@ -10,9 +10,12 @@
     }
 }
 
-namespace ID.IDDataSetTableAdapters {
-    
-    
+namespace ID.IDDataSetTableAdapters
+{
+    partial class sotrfondTableAdapter
+    {
+    }
+
     public partial class СотрудникиTableAdapter {
     }
 }
